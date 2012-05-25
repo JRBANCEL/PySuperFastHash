@@ -72,10 +72,13 @@ def superFastHash(data):
     hash = hash & 0xFFFFFFFF
     hash ^= (hash << 3) & 0xFFFFFFFF
     hash += hash >> 5
+    hash = hash & 0xFFFFFFFF
     hash ^= (hash << 4) & 0xFFFFFFFF
     hash += hash >> 17
+    hash = hash & 0xFFFFFFFF
     hash ^= (hash << 25) & 0xFFFFFFFF
     hash += hash >> 6
+    hash = hash & 0xFFFFFFFF
 
     return hash
 
