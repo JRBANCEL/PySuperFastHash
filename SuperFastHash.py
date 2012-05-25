@@ -41,8 +41,6 @@ def get16bits(data):
 
 def superFastHash(data):
     hash = length = len(data)
-    print "--------------------------------"
-    print "Length: %d"%length
     if length == 0:
         return 0
 
@@ -51,19 +49,12 @@ def superFastHash(data):
 
     while length > 0:
         hash += get16bits(data) & 0xFFFFFFFF
-        print "Step 1: %08x"%hash
         tmp = (get16bits(data[2:])<< 11) ^ hash
-        print "Step 2: %08x"%tmp
         hash = ((hash << 16) & 0xFFFFFFFF) ^ tmp
-        print "Step 3: %08x"%hash
         data = data[4:]
         hash += hash >> 11
         hash = hash & 0xFFFFFFFF
         length -= 1
-        print "%08x | %s"%(hash, data)
-        print "----------------------------"
-
-    print "End loop: %08x"%hash
 
     if rem == 3:
         hash += get16bits (data)
