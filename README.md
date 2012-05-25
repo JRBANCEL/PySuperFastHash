@@ -1,0 +1,4 @@
+PySuperFastHash
+===============
+
+SuperFastHash Python Implementation
